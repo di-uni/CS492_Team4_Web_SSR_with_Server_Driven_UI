@@ -1,40 +1,30 @@
 import React from 'react'
 import PostCard from './PostCard'
 import styles from './news.module.css'
-import MoreContent from '../components/MoreContent';
-
-import { Card, CardHeader } from '@mui/material';
-import Dot from '../../public/icons/dot.svg'; 
-
-// date to millisecond convertor: https://currentmillis.com
-var ViewType = Object.freeze({
-  NEWS: 0,
-  WIKI: 1
-});
+import MoreContent from './MoreContent';
+import { Card, CardHeader, Button, } from '@mui/material';
 
 export default function News({props}) {
   const {news_posts, news_more} = props
 
-  const [sortRelated, setSortRelated] = React.useState(true);
-  const isRelated = Boolean(sortRelated);
+  const [sort, setSort] = React.useState(null);
+  const [sortRelated, setSortRelated] = React.useState(null);
+  const [sortLastest, setSortLastest] = React.useState(null);
+  const isRelated = Boolean(sort);
   const sortRelatedClick = (event) => {
-    setSortRelated(true);
-    // console.log(event.currentTarget);
-    // news_posts&&news_posts.sort((a, b) => console.log(a.relation, b.relation));
-    // news_posts&&news_posts.sort((a, b) => parseFloat(a.relation) > parseFloat(b.relation) ? 1 : -1);
-    // console.log(news_posts);
+    console.log("--------");
+    console.log(isRelated);
+    setSort(!sort);
+    console.log(event.currentTarget);
+    console.log(isRelated);
   };
   const sortLastestClick = (event) => {
-    setSortRelated(false);
-    // console.log(event.currentTarget);
-    // news_posts&&news_posts.sort((a, b) => parseInt(a.date) < parseInt(b.date) ? 1 : -1);
-    // console.log(news_posts);
+    console.log("--------");
+    console.log(isRelated);
+    setSort(!sort);
+    console.log(event.currentTarget);
+    console.log(isRelated);
   };
-
-  sortRelated
-  ? news_posts&&news_posts.sort((a, b) => parseFloat(a.relation) > parseFloat(b.relation) ? 1 : -1) // sort by relation
-  : news_posts&&news_posts.sort((a, b) => parseInt(a.date) < parseInt(b.date) ? 1 : -1);            // sort by date
-
   
 
   return (
@@ -46,40 +36,22 @@ export default function News({props}) {
                 <div className={styles.viewHeader}>
                 <div className={styles.viewName}>뉴스</div>
                 <div className={styles.viewOptions}>
-                      <button className={styles.btn}
+                      <Button className={styles.btn}
                         onClick={sortRelatedClick}
                       >
-                        {sortRelated 
-                        ? <div className={styles.viewSort}>
-                            <Dot className={styles.sortDot} fill="var(--naver_green)"/>
-                            관련도순
-                          </div>
-                        : <div className={styles.viewSort}>
-                            <Dot className={styles.sortDot} fill="var(--date_gray)"/>
-                            <div className={styles.inactiveSort}>관련도순</div>
-                          </div>
-                        }
-                      </button>
-                      <button className={styles.btn}
+                        관련도순
+                      </Button>
+                      <Button className={styles.btn}
                         onClick={sortLastestClick}
                       >
-                        {sortRelated 
-                        ? <div className={styles.viewSort}>
-                            <Dot className={styles.sortDot} fill="var(--date_gray)"/>
-                            <div className={styles.inactiveSort}>최신순</div>
-                          </div>
-                        : <div className={styles.viewSort}>
-                            <Dot className={styles.sortDot} fill="var(--naver_green)"/>
-                            최신순
-                          </div>
-                        }
-                    </button>
+                        최신순
+                      </Button>
                 </div>
             </div>
             }
             style={{ textAlign: 'left'}}
         />
-        {news_posts&&news_posts.map((news) => <PostCard key={news.publisherURL} props={news} view={{"viewType": ViewType.NEWS }}/>)}
+        {news_posts&&news_posts.map((news) => <PostCard key={news.publisherURL} props={news} view={{"viewType": "NEWS"}}/>)}
       </Card>
       <MoreContent props={{'view_option': "뉴스",'more_link':news_more}}/>
       </>

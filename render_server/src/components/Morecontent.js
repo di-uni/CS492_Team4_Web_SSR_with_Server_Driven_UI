@@ -7,7 +7,7 @@ export default function MoreContent({props}){
     const {view_option, more_link} = props;
     return(
         <div className={styles.moreContent} >
-            <Link href={more_link} underline="none">
+            <Link href={more_link}>
                 <a>
                     <Paper 
                         style={{ maxWidth:767, height: 50, borderRadius: 0, backgroundColor: '#f4f7f8'}}>

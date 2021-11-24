@@ -2,11 +2,6 @@ import PostCard from '../components/PostCard'
 import { Box } from '@mui/material';
 import MoreContent from '../components/MoreContent';
 
-var ViewType = Object.freeze({
-    NEWS: 0,
-    WIKI: 1
-});
-
 export default function Wiki({props}) {
     const {wiki_posts, wiki_more} = props
     return (
@@ -15,7 +10,7 @@ export default function Wiki({props}) {
             (wiki) => 
                 <div key={wiki.publisherURL} >
                     <Box sx={{mb: 1.25}}>
-                        <PostCard props={wiki} view={{ "viewType": ViewType.WIKI }}/>
+                        <PostCard props={wiki} view={{ "viewType": "WIKI" }}/>
                     </Box>
                 </div>
         )}

@@ -1,17 +1,11 @@
 import React from 'react'
 import Link from '@mui/material/Link';
 import styles from './postCard.module.css'
-import MoreVert from './morevert'
+import Morevert from './Morevert'
 import DateConvertor from './DateConvertor'
 import Image from 'material-ui-image'
 
 import { Card, CardContent, CardHeader, Divider } from '@mui/material';
-
-var ViewType = Object.freeze({
-    NEWS: 0,
-    WIKI: 1
-});
-// typeScript 에서는 바꾸기 https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/
 
 export default function PostCard({props, view}) {  
     const { publisherURL, publisherImgURL, publisher, date, postURL, title, contents, contentsImgURL } = props
@@ -30,22 +24,12 @@ export default function PostCard({props, view}) {
         setAnchorEl(null);
     };
 
-    // var isWiki = true;
-    // var isWiki = false;
-    // var viewType = ViewType.NEWS;
-    // var viewType = ViewType.WIKI;
-    // console.log(viewType)
-    // console.log(view)
-    // console.log(props)
-
     return (
         <Card sx={{ maxWidth: 766 }} square > 
             <CardHeader 
-                sx={{ m: 0, p:0, paddingTop: '8px', paddingLeft: '16px', paddingRight: '8px', '& .MuiCardHeader-avatar': {
-                    marginRight: '8px',
-                  } }} variant="contained"
+                sx={{ m: 0, p:0, paddingTop: '8px', paddingLeft: '16px', paddingRight: '8px' }} variant="contained"
                 avatar={
-                    <Link href={publisherURL} underline="none">
+                    <Link href={publisherURL}>
                         <a>
                             <div className={styles.publisherImgBoarder}>
                                 {publisherImgURL == ""
@@ -72,13 +56,12 @@ export default function PostCard({props, view}) {
                 }
                 title = {
                     <div className={styles.publishInfo}>
-                        <Link href={publisherURL} underline="none">
+                        <Link href={publisherURL}>
                             <a>
                                 <div className={styles.publisher}>{publisher}</div>
                             </a>
                         </Link>
-                        { viewType != ViewType.WIKI &&
-                        // { viewType != "WIKI" &&
+                        { viewType != "WIKI" &&
                             <hr className={styles.verticalDivider}></hr>
                         }
                         { date != "" &&
@@ -87,7 +70,7 @@ export default function PostCard({props, view}) {
                     </div>
                 }
                 action = {
-                    <MoreVert props = {{
+                    <Morevert props = {{
                         "open": open, 
                         "anchorEl": anchorEl, 
                         "handleClick": handleClick, 
@@ -97,17 +80,14 @@ export default function PostCard({props, view}) {
                 }
             />
             <CardContent sx={{ m: 0, p: 0, paddingLeft: '16px', paddingRight: '16px', marginBottom: '10px' }} variant="contained" >
-                <Link href={postURL} underline="none">
+                <Link href={postURL}>
                     <a>
                         <div className={styles.title}>{title}</div>
-                        { viewType == ViewType.WIKI && <Divider 
-                        // { viewType == "WIKI" && <Divider 
+                        { viewType == "WIKI" && <Divider 
                             sx={{mt: 1.25, mb: 1.25, color: 'gray.light' }} // theme.spacing value (the default for the value is 8px
                         />}
                         <div className={styles.contentsInfo}>
-                            <div className={styles.contents}>
-                                <p>{contents}</p>
-                            </div>
+                            <div className={styles.contents}>{contents}</div>
                             {contentsImgURL != "" && <div className={styles.contentsImgBoarder}>
                                 <Image className={styles.contentsImg}
                                     src={contentsImgURL}

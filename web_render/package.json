@@ -1,0 +1,42 @@
+{
+  "name": "ssr",
+  "version": "5.0.0",
+  "private": true,
+  "dependencies": {
+    "@babel/core": "latest",
+    "@babel/node": "latest",
+    "@babel/plugin-proposal-class-properties": "latest",
+    "@babel/preset-env": "latest",
+    "@babel/preset-react": "latest",
+    "@emotion/cache": "latest",
+    "@emotion/react": "latest",
+    "@emotion/server": "latest",
+    "@emotion/styled": "latest",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/icons-material": "^5.1.1",
+    "@mui/material": "latest",
+    "babel-loader": "latest",
+    "babel-plugin-css-modules-transform": "^1.6.2",
+    "cross-env": "latest",
+    "css-loader": "^6.5.1",
+    "express": "latest",
+    "file-loader": "^6.2.0",
+    "nodemon": "latest",
+    "npm-run-all": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "style-loader": "^3.3.1",
+    "webpack": "latest",
+    "webpack-cli": "latest"
+  },
+  "scripts": {
+    "start": "npm-run-all -p build render_serve web_serve",
+    "build": "webpack -w",
+    "render_serve": "nodemon --exec babel-node -- render_server.js",
+    "web_serve": "nodemon --exec babel-node -- web_server.js",
+    "render_start": "npm-run-all -p build render_serve",
+    "web_start": "npm-run-all -p build web_serve",
+    "production": "cross-env NODE_ENV=production npm start",
+    "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
+  }
+}

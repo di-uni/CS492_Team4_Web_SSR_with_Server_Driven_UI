@@ -1,0 +1,29 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* grid-template-rows: repeat(3, minmax(auto, 254px)); */
+    gap: 2px;
+    /* max-height: 766px;
+    max-width: 766px; */
+    width: 100%;
+    aspect-ratio: 1;
+ 
+
+
+}
+.grid_item{
+    display: flex;
+    position: relative;
+    /* max-height: 254px;
+    max-width: 254px; */
+    aspect-ratio: 1;
+}
+
+/* 
+.grid_item .grid_link{
+
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+} */

@@ -1,14 +1,17 @@
-# CS492_Team4_Web_SSR_with_Server_Driven_UI
+# Web_SSR_with_Server_Driven_UI
 
 ## Brief overview
 
 Render server와 web server를 개발하여 Naver 모바일(https://m.naver.com) 검색 화면 결과 중에서 N개의 화면을 구현하는 프로젝트 
+
+<br/><br/>
 
 ## Basic info
 
 - **Team members' name**: 김민형, 김수아, 박지윤, 최지호
 - **Team members' email**: isa000@kaist.ac.kr, ksa37@kaist.ac.kr, wldbs0507@kaist.ac.kr, legitimation@kaist.ac.kr
 
+<br/><br/>
 
 ## How to run project
 ### Install
@@ -56,6 +59,8 @@ $ npm run web
 ```
 Open https://localhost:4000 to view it in the browser.
 
+<br/><br/>
+
 ## Detailed description
 ### How to Use 
 1. keyword 선택      
@@ -90,6 +95,7 @@ Select box에서 원하는 키워드를 클릭한 후 'LINK' 버튼을 누르면
     ![bulguksa_1](screenshots/bulguksa_1.png)
     ![bulguksa_2](screenshots/bulguksa_2.png)
 
+<br/><br/>
 
 ## Structure
 본 프로젝트는 db server, web server, render server를 이용하여 사용자가 선택한 키워드의 페이지를 보여준다.
@@ -107,12 +113,15 @@ Select box에서 원하는 키워드를 클릭한 후 'LINK' 버튼을 누르면
 <!-- ## Resources
 
 1. [Demo Video](https://) Add youtube link later -->
+<br/><br/>
 
 ## Credits
 - Next js docs: https://nextjs.org/docs/getting-started
 - Material UI: https://mui.com/getting-started/usage/
 - 네이버 공유하기 api: https://developers.naver.com/docs/share/navershare/
 - Jest for unit test: https://jestjs.io/docs/getting-started
+
+<br/><br/>
 
 ## License
 
